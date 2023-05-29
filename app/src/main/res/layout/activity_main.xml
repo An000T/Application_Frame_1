@@ -9,6 +9,7 @@
 
 
     <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -20,28 +21,26 @@
             android:orientation="vertical"
             tools:ignore="MissingConstraints"
 
+
             />
 
 
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/custom_blue"
-            app:itemTextColor="@android:color/white"
-            app:itemIconTint="@android:color/white"
-            app:labelVisibilityMode="labeled"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/menu_nav" />
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/vertical_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+
             >
+
+
+
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar_layout"
                 android:layout_width="match_parent"
@@ -57,6 +56,7 @@
                     app:menu="@menu/menu_toolbar"
                     style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
+
             </com.google.android.material.appbar.AppBarLayout>
             <FrameLayout
                 android:id="@+id/frame3"
@@ -64,9 +64,12 @@
                 android:layout_height="140dp"
                 android:layout_gravity="top"
                 >
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintTop_toTopOf="parent">
                     <ImageView
@@ -106,12 +109,17 @@
                         android:contentDescription="TODO"
                         />
 
+
                 </LinearLayout>
+
+
 
 
             </FrameLayout>
 
+
             <TextView
+                android:id="@+id/disclaimer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -120,12 +128,100 @@
                 android:autoLink="web"
                 android:linksClickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_bar" />
+                app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:useDefaultMargins="true"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disclaimer"
+                android:layoutAnimation="@anim/pivot"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/poster_1"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/press_button_animation">
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/image_8" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/poster_2"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/press_button_animation">
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/image_5" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/poster_3"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/press_button_animation">
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/image_6" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/poster_4"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/press_button_animation">
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/image_7" />
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
+
+
 
         </LinearLayout>
-
-
-
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/custom_blue"
+            app:itemTextColor="@android:color/white"
+            app:itemIconTint="@android:color/white"
+            app:labelVisibilityMode="labeled"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="@+id/vertical_layout"
+            app:menu="@menu/menu_nav" />
     </FrameLayout>
 
 
