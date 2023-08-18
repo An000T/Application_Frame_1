@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
     }
+
     fun launchDetailsFragment(film: Film) {
         //Создаем "посылку"
         val bundle = Bundle()
@@ -73,43 +74,50 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 //
-//        val bottom_navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-//        bottom_navigation.setOnNavigationItemSelectedListener {
-//
-//            when (it.itemId) {
-//                R.id.favorites -> {
-//                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.watch_later -> {
-//                    Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                R.id.selections -> {
-//                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                else -> false
-//            }
+        val bottom_navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottom_navigation.setOnNavigationItemSelectedListener {
 
-
-
-
+            when (it.itemId) {
+                R.id.favorites -> {
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_placeholder, FavoritesFragment())
+                        .addToBackStack(null)
+                        .commit()
+                    true
+                }
+                R.id.watch_later -> {
+                    Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.selections -> {
+                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
 
 
     }
 
-}
-class TopSpacingItemDecoration (private val paddingInDp: Int): RecyclerView.ItemDecoration() {
-    private val Int.convertPx: Int
-        get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        super.getItemOffsets(outRect, view, parent, state)
-        outRect.top = paddingInDp.convertPx
-        outRect.right = paddingInDp.convertPx
-        outRect.left = paddingInDp.convertPx
+    class TopSpacingItemDecoration(private val paddingInDp: Int) : RecyclerView.ItemDecoration() {
+        private val Int.convertPx: Int
+            get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            super.getItemOffsets(outRect, view, parent, state)
+            outRect.top = paddingInDp.convertPx
+            outRect.right = paddingInDp.convertPx
+            outRect.left = paddingInDp.convertPx
+
+        }
     }
 }
 

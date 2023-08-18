@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
     private val filmsDataBase = listOf(
         Film("Halloween", R.drawable.image_10, "Fifteen years after murdering his sister on Halloween night 1963, Michael Myers escapes from a mental hospital and returns to the small town of Haddonfield, Illinois to kill again."),
         Film("Scream 6", R.drawable.image_1, "In the next installment, the survivors of the Ghostface killings leave Woodsboro behind and start a fresh chapter in New York City."),
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
 
             layoutManager = LinearLayoutManager(requireContext())
 
-            val decorator = TopSpacingItemDecoration(8)
+            val decorator = MainActivity.TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
         }
         //Кладем нашу БД в RV
