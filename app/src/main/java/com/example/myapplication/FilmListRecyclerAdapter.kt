@@ -20,6 +20,8 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FilmViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false))
+
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
