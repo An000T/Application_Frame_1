@@ -18,8 +18,9 @@ import kotlinx.android.synthetic.main.film_item.view.*
 class FavoritesFragment: Fragment() {
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+    val film = arguments?.get("film") as Film
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Получаем список при транзакции фрагмента
         val favoritesList: List<Film> = emptyList()
@@ -40,6 +41,20 @@ class FavoritesFragment: Fragment() {
             addItemDecoration(decorator)
         }
             filmsAdapter.addItems(favoritesList)
+
+        details_fab_favorites.setImageResource(
+            if (film.isInFavorites) R.drawable.ic_baseline_favorite_red
+            else R.drawable.ic_baseline_favorite
+        )
+        details_fab_favorites.setOnClickListener {
+            if (!film.isInFavorites) {
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_red)
+                film.isInFavorites = true
+            } else {
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite)
+                film.isInFavorites = false
+            }
+        }
 
     }
 }
